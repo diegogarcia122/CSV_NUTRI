@@ -46,7 +46,7 @@ for index, row in df.iterrows():
                     row.High_Confidence_Limit, row.Sample_Size, row.Total, row.Age_years, row.Education, row.Gender, row.Income, row.Race_Ethnicity, row.GeoLocation, 
                     row.ClassID, row.TopicID, row.QuestionID, row.DataValueTypeID, row.LocationID, row.StratificationCategory1, row.Stratification1, row.StratificationCategoryId1, 
                     row.StratificationID1)
-conn.commit()
 
-executeScriptsFromFile('multidimensional.sql')
+executeScriptsFromFile('DBCreate.sql')
+executeScriptsFromFile('create_dimensional_model.sql')
 
