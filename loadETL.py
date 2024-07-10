@@ -32,22 +32,6 @@ with open('query.sql', 'r') as file:
 
 df = pd.read_sql_query(query,conn)
 
-#df['Data_Value_Unit'] = df["Data_Value_Unit"].fillna(value=0)
-#df['Data_Value'] = df["Data_Value"].fillna(value=0)
-#df['Data_Value_Alt'] = df["Data_Value_Alt"].fillna(value=0)
-#df['Data_Value_Footnote_Symbol'] = df["Data_Value_Footnote_Symbol"].fillna(value=0)
-#df['Data_Value_Footnote'] = df["Data_Value_Footnote"].fillna(value=0)
-#df['[Low_Confidence_Limit]'] = df["Low_Confidence_Limit"].fillna(value=0)
-#df['[High_Confidence_Limit]'] = df["High_Confidence_Limit"].fillna(value=0)
-#df['[Sample_Size]'] = df["Sample_Size"].fillna(value=0)
-#df['[Total]'] = df["Total"].fillna(value=0)
-#df['[Age_years]'] = df["Age_years"].fillna(value=0)
-#df['[Education]'] = df["Education"].fillna(value=0)
-#df['[Gender]'] = df["Gender"].fillna(value=0)
-#df['[Income]'] = df["Income"].fillna(value=0)
-#df['[Race_Ethnicity]'] = df["Race_Ethnicity"].fillna(value=0)
-#df['[GeoLocation]'] = df["GeoLocation"].fillna(value=0)
-
 df = df.fillna(value=0)
 
 executeScriptsFromFile('NewTable.sql')
@@ -63,8 +47,6 @@ for index, row in df.iterrows():
                     row.ClassID, row.TopicID, row.QuestionID, row.DataValueTypeID, row.LocationID, row.StratificationCategory1, row.Stratification1, row.StratificationCategoryId1, 
                     row.StratificationID1)
 conn.commit()
-cursor.close()
 
-
-
+executeScriptsFromFile('multidimensional.sql')
 
