@@ -47,6 +47,10 @@ for index, row in df.iterrows():
                     row.ClassID, row.TopicID, row.QuestionID, row.DataValueTypeID, row.LocationID, row.StratificationCategory1, row.Stratification1, row.StratificationCategoryId1, 
                     row.StratificationID1)
 
-executeScriptsFromFile('DBCreate.sql')
+with open('DBCreate.sql', 'r') as file:
+    query = file.read()
+
+cursor.execute(query)
+
 executeScriptsFromFile('create_dimensional_model.sql')
 
